@@ -1,5 +1,4 @@
-﻿using NinjaTrader.Custom.AddOns.ScalpMaster.Events;
-using NinjaTrader.Custom.AddOns.SecretSauce.Functions;
+﻿using NinjaTrader.Custom.AddOns.SecretSauce.Functions;
 using NinjaTrader.NinjaScript;
 using System;
 using System.Collections.Generic;
@@ -32,7 +31,6 @@ namespace NinjaTrader.Custom.AddOns.SecretSauce.Models
 
             if (pricesForSlope.Count == 0)
             {
-                EventManager.PrintMessage("Warning: Price lists are empty. Cannot calculate trend score.");
                 return 0;
             }
 
