@@ -37,5 +37,31 @@ namespace NinjaTrader.Custom.AddOns.SecretSauce.Functions
 
             return Math.Abs(den) < tolerance ? 0.0 : num / den;
         }
+
+        public static double CalculateLogReturn(
+        double current,
+        double previous,
+        double tolerance = 1e-10)
+        {
+            if (previous < tolerance || current < tolerance)
+                return 0.0;
+
+            return Math.Log(current / previous);
+        }
+
+        public static List<double> CalculateLogReturns(IReadOnlyList<double> series)
+        {
+            var returns = new List<double>();
+
+            for (int i = 1; i < series.Count; i++)
+            {
+                double current = series[i];
+                double previous = series[i - 1];
+
+                returns.Add(CalculateLogReturn(current, previous));
+            }
+
+            return returns;
+        }
     }
 }
